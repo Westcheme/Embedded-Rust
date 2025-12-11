@@ -1,0 +1,40 @@
+[package]
+name = "ECE_5542_Final_Project"
+authors = ["Jacob Westerbeek < jlwester@umich.edu >"]
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "embedded_rust"
+path = "src/bin/embedded_rust.rs"
+test = false
+bench = false
+
+[profile.release]
+codegen-units = 1 # better optimizations
+debug = true      # symbols are nice and they don't increase the size on Flash
+lto = true        # better optimizations
+opt-level = "s"   # Optimize for size
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+embassy-stm32 = { version = "0.1.0", features = [
+    "stm32f407vg",
+    "unstable-pac",
+    "memory-x",
+    "time-driver-any",
+    "exti",
+    "chrono",
+] }
+embassy-executor = { version = "0.5.0", features = [
+    "integrated-timers",
+    "arch-cortex-m",
+    "executor-thread",
+] }
+embassy-time = { version = "0.3.0" }
+embassy-sync = { version = "0.5.0" }
+cortex-m = { version = "0.7", features = ["critical-section-single-core"] }
+cortex-m-rt = "0.7"
+panic-probe = { version = "0.3" }
+static_cell = "2.1.1"
