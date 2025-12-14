@@ -1,3 +1,9 @@
+## Install Rust
+
+Rust can be installed at the link below:
+
+https://rust-lang.org/tools/install/
+
 ## Building and Flashing
 
 Run these two commands while in the project folder to build and flash the code to the board:
